@@ -22,8 +22,8 @@ WORKDIR /app
 COPY package*.json ./
 COPY tsconfig.json ./
 
-# Instalar dependências
-RUN npm ci --only=production && npm cache clean --force
+# Instalar dependências (usar npm install ao invés de npm ci)
+RUN npm install --only=production && npm cache clean --force
 
 # Copiar código fonte
 COPY src/ ./src/
