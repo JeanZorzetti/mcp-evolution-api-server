@@ -1,0 +1,27 @@
+{
+  "name": "mcp-server-evolution-api",
+  "version": "1.0.0",
+  "description": "Servidor MCP para Evolution API - Acesso remoto para Claude",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsc --watch & node --watch dist/server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "ws": "^8.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/cors": "^2.8.17",
+    "@types/ws": "^8.5.10",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  }
+}
