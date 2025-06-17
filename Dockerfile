@@ -37,12 +37,12 @@ RUN rm -rf src/ tsconfig.json
 # Mudar para usuário não-root
 USER nextjs
 
-# Expor porta
-EXPOSE 3000
+# Expor porta 3002
+EXPOSE 3002
 
-# Health check
+# Health check na porta 3002
 HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
-    CMD curl -f http://localhost:3000/health || exit 1
+    CMD curl -f http://localhost:3002/health || exit 1
 
 # Usar dumb-init para gerenciamento de processos
 ENTRYPOINT ["dumb-init", "--"]
