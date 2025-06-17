@@ -22,8 +22,8 @@ WORKDIR /app
 COPY package*.json ./
 COPY tsconfig.json ./
 
-# Instalar dependências (usar npm install ao invés de npm ci)
-RUN npm install --only=production && npm cache clean --force
+# Instalar TODAS as dependências (incluindo devDependencies para compilar)
+RUN npm install && npm cache clean --force
 
 # Copiar código fonte
 COPY src/ ./src/
@@ -31,8 +31,9 @@ COPY src/ ./src/
 # Compilar TypeScript
 RUN npm run build
 
-# Remover arquivos de desenvolvimento
-RUN rm -rf src/ tsconfig.json
+# Remover dependências de desenvolvimento e arquivos desnecessários
+RUN npm prune --production && \
+    rm -rf src/ tsconfig.json node_modules/.cache
 
 # Mudar para usuário não-root
 USER nextjs
